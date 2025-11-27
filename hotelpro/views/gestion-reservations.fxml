@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelpro.controllers.ControleurGestionReservations"
+            styleClass="background">
+    
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="glass-pane" 
+             style="-fx-background-radius: 0; -fx-border-radius: 0;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Button text="← Retour" onAction="#retourTableauDeBord" styleClass="button-secondary"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Gestion des Réservations" styleClass="label-heading"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+                <Label text="Liste des Réservations" styleClass="label-section"/>
+                <TableView fx:id="tableReservations" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colonneId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colonneClient" text="Client" prefWidth="150"/>
+                        <TableColumn fx:id="colonneChambre" text="Chambre" prefWidth="80"/>
+                        <TableColumn fx:id="colonneArrivee" text="Arrivée" prefWidth="100"/>
+                        <TableColumn fx:id="colonneDepart" text="Départ" prefWidth="100"/>
+                        <TableColumn fx:id="colonneStatut" text="Statut" prefWidth="120"/>
+                        <TableColumn fx:id="colonneMontant" text="Montant" prefWidth="100"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+            
+            <VBox spacing="20" styleClass="glass-pane" prefWidth="350">
+                <padding>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </padding>
+                <Label text="Nouvelle Réservation" styleClass="label-section"/>
+                
+                <VBox spacing="8">
+                    <Label text="Client *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboClient" promptText="Sélectionner un client" 
+                             styleClass="combo-box" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Chambre *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboChambre" promptText="Sélectionner une chambre" 
+                             styleClass="combo-box" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Date d'Arrivée *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <DatePicker fx:id="dateArrivee" promptText="Date d'arrivée" 
+                               styleClass="date-picker" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Date de Départ *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <DatePicker fx:id="dateDepart" promptText="Date de départ" 
+                               styleClass="date-picker" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Statut" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboStatut" promptText="Statut de la réservation" 
+                             styleClass="combo-box" prefWidth="300"/>
+                </VBox>
+                
+                <Separator style="-fx-background-color: rgba(255,255,255,0.1);"/>
+                
+                <HBox alignment="CENTER_LEFT" spacing="10" 
+                     style="-fx-background-color: rgba(99, 102, 241, 0.15); -fx-background-radius: 10px; -fx-padding: 15px;">
+                    <Label text="Montant Total:" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <Label fx:id="labelMontant" text="0.00 €" 
+                          style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #6366F1;"/>
+                </HBox>
+                
+                <VBox spacing="12">
+                    <Button text="Créer Réservation" onAction="#ajouterReservation" 
+                           styleClass="button-success" prefWidth="300"/>
+                    <Button text="Modifier Réservation" onAction="#modifierReservation" 
+                           styleClass="button" prefWidth="300"/>
+                    <Button text="Annuler Réservation" onAction="#supprimerReservation" 
+                           styleClass="button-danger" prefWidth="300"/>
+                </VBox>
+            </VBox>
+            
+        </HBox>
+    </center>
+    
+</BorderPane>

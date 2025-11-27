@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelpro.controllers.ControleurRapports"
+            styleClass="background">
+    
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="glass-pane" 
+             style="-fx-background-radius: 0; -fx-border-radius: 0;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Button text="← Retour" onAction="#retourTableauDeBord" styleClass="button-secondary"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Rapports et Statistiques" styleClass="label-heading"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="📄 Exporter PDF" onAction="#exporterPDF" styleClass="button"/>
+            <Button text="📊 Exporter CSV" onAction="#exporterCSV" styleClass="button"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox spacing="25">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <!-- Statistiques clés -->
+                <VBox spacing="15">
+                    <Label text="Indicateurs Clés de Performance" styleClass="label-section"/>
+                    <GridPane hgap="20" vgap="20">
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="0">
+                            <Label text="💰" style="-fx-font-size: 32px;"/>
+                            <Label text="Revenu Total" styleClass="label-subtitle"/>
+                            <Label fx:id="labelRevenuTotal" text="0.00 €" 
+                                  style="-fx-font-size: 32px; -fx-font-weight: 700; -fx-text-fill: #10B981;"/>
+                        </VBox>
+                        
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="1">
+                            <Label text="📅" style="-fx-font-size: 32px;"/>
+                            <Label text="Total Réservations" styleClass="label-subtitle"/>
+                            <Label fx:id="labelNombreReservations" text="0" 
+                                  style="-fx-font-size: 32px; -fx-font-weight: 700; -fx-text-fill: #6366F1;"/>
+                        </VBox>
+                        
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="2">
+                            <Label text="📊" style="-fx-font-size: 32px;"/>
+                            <Label text="Taux d'Occupation" styleClass="label-subtitle"/>
+                            <Label fx:id="labelTauxMoyen" text="0%" 
+                                  style="-fx-font-size: 32px; -fx-font-weight: 700; -fx-text-fill: #8B5CF6;"/>
+                        </VBox>
+                        
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="3">
+                            <Label text="💸" style="-fx-font-size: 32px;"/>
+                            <Label text="CA Prévisionnel" styleClass="label-subtitle"/>
+                            <Label fx:id="labelChiffreAffaires" text="0.00 €" 
+                                  style="-fx-font-size: 32px; -fx-font-weight: 700; -fx-text-fill: #EC4899;"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Graphiques -->
+                <HBox spacing="20" alignment="CENTER">
+                    <!-- Graphique Statuts -->
+                    <VBox spacing="15" styleClass="card" HBox.hgrow="ALWAYS" alignment="CENTER">
+                        <Label text="Statut des Chambres" styleClass="label-section"/>
+                        <PieChart fx:id="graphiqueStatuts" 
+                                 legendSide="BOTTOM" 
+                                 prefHeight="350"
+                                 style="-fx-background-color: transparent;"/>
+                    </VBox>
+                    
+                    <!-- Graphique Revenus -->
+                    <VBox spacing="15" styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Revenus par Type de Chambre" styleClass="label-section"/>
+                        <BarChart fx:id="graphiqueRevenus" 
+                                 prefHeight="350"
+                                 style="-fx-background-color: transparent;">
+                            <xAxis>
+                                <CategoryAxis label="Type de Chambre" side="BOTTOM"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Revenu (€)" side="LEFT"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+                </HBox>
+                
+                <!-- Informations supplémentaires -->
+                <VBox spacing="10" styleClass="glass-pane">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="ℹ️ Informations" styleClass="label-section"/>
+                    <Label text="• Les données affichées sont basées sur les réservations et factures enregistrées" 
+                          styleClass="label-subtitle" wrapText="true"/>
+                    <Label text="• Le revenu total représente uniquement les factures payées" 
+                          styleClass="label-subtitle" wrapText="true"/>
+                    <Label text="• Le CA prévisionnel inclut les réservations confirmées et en cours" 
+                          styleClass="label-subtitle" wrapText="true"/>
+                    <Label text="• Les exports PDF et CSV sont des fonctionnalités de démonstration" 
+                          styleClass="label-subtitle" wrapText="true"/>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

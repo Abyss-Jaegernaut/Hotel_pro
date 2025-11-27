@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Lanceur",
+            "request": "launch",
+            "mainClass": "hotelpro.Lanceur",
+            "projectName": "Hotel Pro_919f8e8",
+            "vmArgs": "--module-path \"${workspaceFolder}/lib_modules\" --add-modules javafx.controls,javafx.fxml -Djava.library.path=\"${workspaceFolder}/lib\" --enable-native-access=ALL-UNNAMED",
+            "classPaths": [
+                ".",
+                "${workspaceFolder}/lib/sqlite-jdbc-3.44.1.0.jar"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "ApplicationPrincipale",
+            "request": "launch",
+            "mainClass": "hotelpro.ApplicationPrincipale",
+            "projectName": "Hotel Pro_919f8e8",
+            "vmArgs": "--module-path \"${workspaceFolder}/lib_modules\" --add-modules javafx.controls,javafx.fxml -Djava.library.path=\"${workspaceFolder}/lib\" --enable-native-access=ALL-UNNAMED",
+            "classPaths": [
+                ".",
+                "${workspaceFolder}/lib/sqlite-jdbc-3.44.1.0.jar"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Lancer Hotel Manager Pro (Via Lanceur)",
+            "request": "launch",
+            "mainClass": "hotelpro.Lanceur",
+            "projectName": "Hotel Pro",
+            "vmArgs": "--module-path \"${workspaceFolder}/lib_modules\" --add-modules javafx.controls,javafx.fxml -Djava.library.path=\"${workspaceFolder}/lib\" --enable-native-access=ALL-UNNAMED",
+            "classPaths": [
+                ".",
+                "${workspaceFolder}/lib/sqlite-jdbc-3.44.1.0.jar",
+                "${workspaceFolder}/bin"
+            ]
+        }
+    ]
+}

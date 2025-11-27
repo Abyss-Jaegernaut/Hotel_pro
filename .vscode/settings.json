@@ -1,0 +1,12 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "lib_modules/**/*.jar"
+    ],
+    "java.project.sourcePaths": [
+        ""
+    ],
+    "java.project.outputPath": "bin",
+    "java.configuration.runtimes": [],
+    "java.debug.settings.vmArgs": "--module-path \"${workspaceFolder}/lib_modules\" --add-modules javafx.controls,javafx.fxml -Djava.library.path=\"${workspaceFolder}/lib\" --enable-native-access=ALL-UNNAMED"
+}

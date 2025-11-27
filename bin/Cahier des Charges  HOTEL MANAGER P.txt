@@ -1,0 +1,90 @@
+Cahier des Charges : HOTEL MANAGER PRO
+1. Contexte & Objectifs
+Problème actuel
+La gestion des réservations hôtelières est actuellement inefficace (procédures manuelles ou outils obsolètes), entraînant des doubles réservations, des retards de traitement et une baisse de satisfaction client.
+Objectif principal
+Concevoir une application automatisée, fiable et performante pour gérer les chambres, les clients et les réservations, afin de :
+•	Optimiser le taux d’occupation,
+•	Améliorer la qualité du service client,
+•	Réduire les erreurs humaines et les temps de traitement.
+Objectif mesurable
+Réduire le temps moyen de traitement d’une réservation de 10 minutes à moins de 3 minutes.
+Acteurs clés
+                              Acteur	                     Rôle principal
+                            Réceptionniste	Gère les réservations, les arrivées/départs et les paiements.
+                  Administrateur / Manager	
+Configure les chambres, supervise les opérations et consulte les rapports.
+
+ 
+2. Exigences Fonctionnelles (5 Fonctions Clés)
+2.1. Gestion des Chambres et de l’Inventaire
+•	Créer et gérer les types de chambre (Simple, Double, Suite) avec prix, description et équipements.
+•	Enregistrer les chambres physiques et leur statut : Disponible, Occupée, Maintenance.
+•	Assurer l’unicité du numéro de chambre.
+•	Permettre la mise à jour automatique du statut en fonction des réservations.
+ 
+2.2. Gestion des Clients
+•	Enregistrer les informations complètes des clients (Nom, Prénom, Email, Téléphone, Adresse).
+•	Rechercher rapidement un client existant pour lier une réservation.
+•	Conserver l’historique des séjours et paiements du client.
+ 
+2.3. Gestion du Cycle de Réservation (Cœur du Système)
+•	Vérifier la disponibilité des chambres en temps réel selon les dates choisies.
+•	Créer, modifier ou annuler une réservation.
+•	Gérer le Check-in (arrivée) et Check-out (départ) avec mise à jour automatique du statut de la chambre.
+•	Empêcher toute double réservation sans validation explicite du Manager.
+ 
+2.4. Gestion de la Facturation
+•	Calculer automatiquement le montant total d’une réservation (chambre + taxes + extras).
+•	Générer une facture claire et exportable (PDF).
+•	Enregistrer les paiements partiels ou totaux, avec leur mode (Carte, Espèces, Virement).
+•	Permettre la consultation des factures passées par le manager.
+ 
+2.5. Reporting et Tableaux de Bord
+•	Afficher en temps réel le taux d’occupation actuel et prévu.
+•	Produire des rapports de performance mensuels (revenus par type de chambre, taux de remplissage).
+•	Exporter les rapports au format CSV ou PDF.
+ 
+3. Exigences Non Fonctionnelles
+3.1. Performance & Fiabilité
+•	Le système doit afficher la disponibilité des chambres en moins de 3 secondes.
+•	Garantir la cohérence des transactions pour éviter tout overbooking.
+•	Les opérations critiques (création de réservation, paiement) doivent être atomiques et sécurisées.
+ 
+3.2. Sécurité & Accès
+•	Authentification obligatoire pour tous les utilisateurs (identifiant + mot de passe).
+•	Gestion des rôles et permissions :
+o	Le Réceptionniste ne peut pas accéder aux rapports financiers.
+o	L’Administrateur dispose des droits complets.
+•	Journalisation des actions importantes (audit).
+•	Stockage sécurisé des données clients (chiffrement des mots de passe).
+ 
+3.3. Contraintes Techniques (Client Libre)
+L’application devra être développée dans un environnement moderne, stable et largement supporté, garantissant performance, sécurité, maintenabilité et évolutivité.
+Exigences minimales
+•	Fonctionnement multiplateforme (Mobile et Dekstop).
+•	Architecture modulaire et orientée objet.
+•	Base de données relationnelle, avec transactions ACID.
+•	Communication fluide entre les couches (client ↔ serveur via API ou équivalent).
+•	Utilisation de composants open-source fiables, bien documentés, sans dépendance critique à un fournisseur.
+•	Capacité à gérer une charge croissante (scalabilité).
+Objectifs de conception
+•	Respect d’une architecture en couches (Présentation / Métier / Données).
+•	Sécurisation des accès et transactions dès la conception.
+•	Mise en place de tests unitaires et d’intégration.
+•	Documentation claire et complète pour faciliter la maintenance.
+•	Code et données portables et compatibles avec les environnements récents.
+ 
+Critères d’acceptation
+L’application sera considérée comme acceptable lorsque :
+•	Les cinq fonctions clés (Section 2) sont intégralement opérationnelles.
+•	Les temps de réponse sont inférieurs à 3 secondes pour les principales opérations.
+•	Aucune double réservation ne peut être effectuée sans autorisation.
+•	Les factures et rapports générés sont fiables et conformes.
+•	Les accès et rôles utilisateurs fonctionnent conformément aux règles définies.
+ 
+Conclusion
+Ce cahier des charges définit le périmètre fonctionnel et qualitatif du projet HOTEL MANAGER PRO.
+Il fixe les attentes du client sans imposer de choix techniques, tout en garantissant la robustesse, la sécurité et la performance du futur système.
+Les décisions technologiques seront précisées ultérieurement dans la spécification technique ou le document d’architecture du projet.
+

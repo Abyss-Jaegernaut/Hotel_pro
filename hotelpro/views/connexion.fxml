@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="hotelpro.controllers.ControleurConnexion"
+           styleClass="background">
+    
+    <VBox alignment="CENTER" spacing="30" maxWidth="450" fx:id="conteneurConnexion">
+        <!-- Card de connexion -->
+        <VBox styleClass="glass-pane" spacing="25" alignment="CENTER">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+            
+            <!-- Logo / Titre -->
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="🏨" style="-fx-font-size: 64px;"/>
+                <Label text="HOTEL MANAGER PRO" styleClass="label-title" 
+                       style="-fx-font-size: 28px; -fx-font-weight: 700;"/>
+                <Label text="Système de Gestion Hôtelière" styleClass="label-subtitle"/>
+            </VBox>
+            
+            <!-- Formulaire de connexion -->
+            <VBox spacing="15" prefWidth="350">
+                
+                <!-- Nom d'utilisateur -->
+                <VBox spacing="8">
+                    <Label text="Nom d'utilisateur" styleClass="label" 
+                           style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champNomUtilisateur" 
+                              promptText="Entrez votre nom d'utilisateur"
+                              styleClass="text-field"/>
+                </VBox>
+                
+                <!-- Mot de passe -->
+                <VBox spacing="8">
+                    <Label text="Mot de passe" styleClass="label" 
+                           style="-fx-font-weight: 600;"/>
+                    <PasswordField fx:id="champMotDePasse" 
+                                  promptText="Entrez votre mot de passe"
+                                  styleClass="password-field"/>
+                </VBox>
+                
+                <!-- Rôle (pour démonstration) -->
+                <VBox spacing="8">
+                    <Label text="Rôle de connexion" styleClass="label" 
+                           style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboRole" prefWidth="350" styleClass="combo-box"/>
+                </VBox>
+                
+                <!-- Message d'erreur -->
+                <Label fx:id="labelErreur" textFill="#EF4444" wrapText="true"
+                       style="-fx-font-size: 13px; -fx-padding: 8px; -fx-background-color: rgba(239, 68, 68, 0.1); -fx-background-radius: 8px;"/>
+                
+                <!-- Bouton de connexion -->
+                <Button fx:id="boutonConnexion" text="Se connecter" 
+                       onAction="#seConnecter"
+                       styleClass="button"
+                       prefWidth="350"
+                       style="-fx-font-size: 16px; -fx-padding: 14px;"/>
+                
+                <Button text="Accès Visiteur (Réserver une chambre)" 
+                       onAction="#accesVisiteur"
+                       styleClass="button-outlined"
+                       prefWidth="350"
+                       style="-fx-font-size: 14px; -fx-padding: 10px;"/>
+            </VBox>
+            
+            <!-- Info de démonstration -->
+            <VBox spacing="8" alignment="CENTER" style="-fx-padding: 20px 0px 0px 0px;">
+                <Separator prefWidth="350" style="-fx-background-color: rgba(255,255,255,0.1);"/>
+                <Label text="Comptes de démonstration :" styleClass="label-subtitle" 
+                       style="-fx-font-size: 12px; -fx-font-weight: 600;"/>
+                <Label text="Admin: admin / admin123" styleClass="label-subtitle" 
+                       style="-fx-font-size: 11px;"/>
+                <Label text="Réception: reception / recep123" styleClass="label-subtitle" 
+                       style="-fx-font-size: 11px;"/>
+            </VBox>
+            
+        </VBox>
+    </VBox>
+    
+</StackPane>

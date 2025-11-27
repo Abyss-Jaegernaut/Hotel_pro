@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelpro.controllers.ControleurGestionClients"
+            styleClass="background">
+    
+    <top>
+        <VBox>
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="glass-pane" 
+                 style="-fx-background-radius: 0; -fx-border-radius: 0;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Button text="← Retour" onAction="#retourTableauDeBord" styleClass="button-secondary"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="Gestion des Clients" styleClass="label-heading"/>
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+            
+            <HBox spacing="15">
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+                <Label text="🔍" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="champRecherche" promptText="Rechercher un client (nom, email, téléphone)..." 
+                          styleClass="text-field" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+                <Label text="Liste des Clients" styleClass="label-section"/>
+                <TableView fx:id="tableClients" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colonneId" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="colonnePrenom" text="Prénom" prefWidth="120"/>
+                        <TableColumn fx:id="colonneNom" text="Nom" prefWidth="120"/>
+                        <TableColumn fx:id="colonneEmail" text="Email" prefWidth="200"/>
+                        <TableColumn fx:id="colonneTelephone" text="Téléphone" prefWidth="120"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+            
+            <VBox spacing="20" styleClass="glass-pane" prefWidth="350">
+                <padding>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </padding>
+                <Label text="Informations Client" styleClass="label-section"/>
+                
+                <VBox spacing="8">
+                    <Label text="Prénom *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champPrenom" promptText="Prénom du client" styleClass="text-field"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Nom *" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champNom" promptText="Nom du client" styleClass="text-field"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Email" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champEmail" promptText="email@exemple.com" styleClass="text-field"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Téléphone" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champTelephone" promptText="06 XX XX XX XX" styleClass="text-field"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Adresse" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextArea fx:id="champAdresse" promptText="Adresse complète du client" 
+                             prefRowCount="3" wrapText="true"
+                             style="-fx-background-color: rgba(51, 65, 85, 0.5); -fx-text-fill: white; -fx-background-radius: 10px; -fx-border-color: rgba(255,255,255,0.1); -fx-border-radius: 10px;"/>
+                </VBox>
+                
+                <Separator style="-fx-background-color: rgba(255,255,255,0.1);"/>
+                
+                <VBox spacing="12">
+                    <Button text="Ajouter Client" onAction="#ajouterClient" 
+                           styleClass="button-success" prefWidth="300"/>
+                    <Button text="Modifier Client" onAction="#modifierClient" 
+                           styleClass="button" prefWidth="300"/>
+                    <Button text="Supprimer Client" onAction="#supprimerClient" 
+                           styleClass="button-danger" prefWidth="300"/>
+                </VBox>
+            </VBox>
+            
+        </HBox>
+    </center>
+    
+</BorderPane>

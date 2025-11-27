@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelpro.controllers.ControleurGestionChambres"
+            styleClass="background">
+    
+    <!-- En-tête -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="glass-pane" 
+             style="-fx-background-radius: 0; -fx-border-radius: 0;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Button text="← Retour" onAction="#retourTableauDeBord" styleClass="button-secondary"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Gestion des Chambres" styleClass="label-heading"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <!-- Table des chambres -->
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+                <Label text="Liste des Chambres" styleClass="label-section"/>
+                <TableView fx:id="tableChambres" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colonneNumero" text="N° Chambre" prefWidth="100"/>
+                        <TableColumn fx:id="colonneType" text="Type" prefWidth="150"/>
+                        <TableColumn fx:id="colonneStatut" text="Statut" prefWidth="150"/>
+                        <TableColumn fx:id="colonnePrix" text="Prix / Nuit" prefWidth="120"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+            
+            <!-- Formulaire -->
+            <VBox spacing="20" styleClass="glass-pane" prefWidth="350">
+                <padding>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </padding>
+                <Label text="Détails de la Chambre" styleClass="label-section"/>
+                
+                <VBox spacing="8">
+                    <Label text="Numéro de Chambre" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champNumero" promptText="Ex: 101" styleClass="text-field"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Type de Chambre" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboType" promptText="Sélectionner un type" 
+                             styleClass="combo-box" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Statut" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <ComboBox fx:id="comboStatut" promptText="Sélectionner un statut" 
+                             styleClass="combo-box" prefWidth="300"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Prix par Nuit (€)" styleClass="label" style="-fx-font-weight: 600;"/>
+                    <TextField fx:id="champPrix" promptText="Ex: 120.00" styleClass="text-field"/>
+                </VBox>
+                
+                <Separator style="-fx-background-color: rgba(255,255,255,0.1);"/>
+                
+                <VBox spacing="12">
+                    <Button fx:id="boutonAjouter" text="Ajouter Chambre" 
+                           onAction="#ajouterChambre" styleClass="button-success" 
+                           prefWidth="300"/>
+                    <Button fx:id="boutonModifier" text="Modifier Chambre" 
+                           onAction="#modifierChambre" styleClass="button" 
+                           prefWidth="300"/>
+                    <Button fx:id="boutonSupprimer" text="Supprimer Chambre" 
+                           onAction="#supprimerChambre" styleClass="button-danger" 
+                           prefWidth="300"/>
+                </VBox>
+            </VBox>
+            
+        </HBox>
+    </center>
+    
+</BorderPane>

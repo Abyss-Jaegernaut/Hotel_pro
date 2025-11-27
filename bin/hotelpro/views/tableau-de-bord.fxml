@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelpro.controllers.ControleurTableauDeBord"
+            styleClass="background">
+    
+    <!-- En-tête -->
+    <top>
+        <VBox styleClass="glass-pane" style="-fx-background-radius: 0; -fx-border-radius: 0;">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="🏨" style="-fx-font-size: 32px;"/>
+                <VBox>
+                    <Label text="HOTEL MANAGER PRO" styleClass="label-heading"/>
+                    <Label fx:id="labelBienvenue" text="Bienvenue" styleClass="label-subtitle"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Déconnexion" onAction="#seDeconnecter" 
+                       styleClass="button-secondary"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox spacing="30" fx:id="conteneurPrincipal">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
+                
+                <!-- Statistiques -->
+                <VBox spacing="15">
+                    <Label text="Tableau de Bord" styleClass="label-section"/>
+                    
+                    <GridPane hgap="20" vgap="20">
+                        <!-- Statistique 1 -->
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="0">
+                            <Label text="🛏️" style="-fx-font-size: 32px;"/>
+                            <Label text="Total Chambres" styleClass="label-subtitle"/>
+                            <Label fx:id="labelNombreChambres" text="0" 
+                                  style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #6366F1;"/>
+                        </VBox>
+                        
+                        <!-- Statistique 2 -->
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="1">
+                            <Label text="✅" style="-fx-font-size: 32px;"/>
+                            <Label text="Chambres Disponibles" styleClass="label-subtitle"/>
+                            <Label fx:id="labelChambresDisponibles" text="0" 
+                                  style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #10B981;"/>
+                        </VBox>
+                        
+                        <!-- Statistique 3 -->
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="2">
+                            <Label text="📊" style="-fx-font-size: 32px;"/>
+                            <Label text="Taux d'Occupation" styleClass="label-subtitle"/>
+                            <Label fx:id="labelTauxOccupation" text="0%" 
+                                  style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #8B5CF6;"/>
+                        </VBox>
+                        
+                        <!-- Statistique 4 -->
+                        <VBox styleClass="stat-card" spacing="10" GridPane.columnIndex="3">
+                            <Label text="📅" style="-fx-font-size: 32px;"/>
+                            <Label text="Réservations Actives" styleClass="label-subtitle"/>
+                            <Label fx:id="labelReservationsActives" text="0" 
+                                  style="-fx-font-size: 36px; -fx-font-weight: 700; -fx-text-fill: #EC4899;"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+                <!-- Menu de navigation -->
+                <VBox spacing="15">
+                    <Label text="Modules de Gestion" styleClass="label-section"/>
+                    
+                    <GridPane hgap="20" vgap="20">
+                        <!-- Gestion des Chambres -->
+                        <VBox styleClass="card" spacing="15" alignment="CENTER" 
+                             GridPane.columnIndex="0" GridPane.rowIndex="0"
+                             onMouseClicked="#allerVersChambres"
+                             style="-fx-cursor: hand; -fx-min-height: 180px;">
+                            <Label text="🛏️" style="-fx-font-size: 48px;"/>
+                            <Label text="Gestion des Chambres" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: 600; -fx-text-fill: white;"/>
+                            <Label text="Gérer les chambres et leur disponibilité" 
+                                  styleClass="label-subtitle" wrapText="true" alignment="CENTER"
+                                  style="-fx-text-alignment: center;"/>
+                        </VBox>
+                        
+                        <!-- Gestion des Clients -->
+                        <VBox styleClass="card" spacing="15" alignment="CENTER" 
+                             GridPane.columnIndex="1" GridPane.rowIndex="0"
+                             onMouseClicked="#allerVersClients"
+                             style="-fx-cursor: hand; -fx-min-height: 180px;">
+                            <Label text="👥" style="-fx-font-size: 48px;"/>
+                            <Label text="Gestion des Clients" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: 600; -fx-text-fill: white;"/>
+                            <Label text="Enregistrer et gérer les clients" 
+                                  styleClass="label-subtitle" wrapText="true" alignment="CENTER"
+                                  style="-fx-text-alignment: center;"/>
+                        </VBox>
+                        
+                        <!-- Gestion des Réservations -->
+                        <VBox styleClass="card" spacing="15" alignment="CENTER" 
+                             GridPane.columnIndex="2" GridPane.rowIndex="0"
+                             onMouseClicked="#allerVersReservations"
+                             style="-fx-cursor: hand; -fx-min-height: 180px;">
+                            <Label text="📅" style="-fx-font-size: 48px;"/>
+                            <Label text="Gestion des Réservations" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: 600; -fx-text-fill: white;"/>
+                            <Label text="Créer et gérer les réservations" 
+                                  styleClass="label-subtitle" wrapText="true" alignment="CENTER"
+                                  style="-fx-text-alignment: center;"/>
+                        </VBox>
+                        
+                        <!-- Facturation -->
+                        <VBox styleClass="card" spacing="15" alignment="CENTER" 
+                             GridPane.columnIndex="0" GridPane.rowIndex="1"
+                             onMouseClicked="#allerVersFacturation"
+                             style="-fx-cursor: hand; -fx-min-height: 180px;">
+                            <Label text="💳" style="-fx-font-size: 48px;"/>
+                            <Label text="Facturation" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: 600; -fx-text-fill: white;"/>
+                            <Label text="Gérer les factures et paiements" 
+                                  styleClass="label-subtitle" wrapText="true" alignment="CENTER"
+                                  style="-fx-text-alignment: center;"/>
+                        </VBox>
+                        
+                        <!-- Rapports -->
+                        <VBox styleClass="card" spacing="15" alignment="CENTER" 
+                             GridPane.columnIndex="1" GridPane.rowIndex="1"
+                             onMouseClicked="#allerVersRapports"
+                             style="-fx-cursor: hand; -fx-min-height: 180px;">
+                            <Label text="📊" style="-fx-font-size: 48px;"/>
+                            <Label text="Rapports" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: 600; -fx-text-fill: white;"/>
+                            <Label text="Consulter les statistiques et rapports" 
+                                  styleClass="label-subtitle" wrapText="true" alignment="CENTER"
+                                  style="-fx-text-alignment: center;"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+</BorderPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="hotelpro.controllers.client.ControleurTableauDeBordClient"
+      styleClass="main-container" spacing="20">
+      
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- En-tête -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <Label text="🏨 Réservation de Chambres" styleClass="page-title" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Se Déconnecter" styleClass="button-outlined"/>
+    </HBox>
+
+    <!-- Filtres -->
+    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+        <VBox spacing="5">
+            <Label text="Date d'arrivée"/>
+            <DatePicker fx:id="dateDebut"/>
+        </VBox>
+        <VBox spacing="5">
+            <Label text="Date de départ"/>
+            <DatePicker fx:id="dateFin"/>
+        </VBox>
+        <Button text="Rechercher" onAction="#rechercher" styleClass="button-primary" style="-fx-translate-y: 10;"/>
+        <Label fx:id="labelStatus" style="-fx-text-fill: #666; -fx-translate-y: 10;"/>
+    </HBox>
+
+    <!-- Grille des chambres -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <FlowPane fx:id="conteneurChambres" hgap="20" vgap="20" style="-fx-padding: 10;"/>
+    </ScrollPane>
+
+</VBox>
